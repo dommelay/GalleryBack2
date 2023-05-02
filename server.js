@@ -9,7 +9,7 @@ const MyArtworks = require('./models/myartwork.js')
 
 const PORT = process.env.PORT
 const MONGODB_URI = process.env.MONGODB_URI;
-mongoose.connect(MONGODB_URI)
+// mongoose.connect(MONGODB_URI)
 
 app.use(express.static('public'));
 app.use(cors())
@@ -43,8 +43,8 @@ app.delete('/my-artworks/:id', (req, res) => {
         res.json(deletedArtwork)
     })
 })
-
-mongoose.connect('mongodb://localhost:27017/gallerycrud')
+mongoose.connect(MONGODB_URI)
+// mongoose.connect('mongodb://localhost:27017/gallerycrud')
 mongoose.connection.once('open', () => {
     console.log('connected to mongod...')
 })
